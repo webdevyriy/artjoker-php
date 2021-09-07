@@ -1,23 +1,21 @@
 <?php
 
-class Triangle  extends Figure{
-    protected $a, $b, $c;
+class Triangle  implements Figure{
+    protected $sideOne, $sideTwo, $sideThree;
 
-    public function __construct(int $a, int $b,  int $c) {
-        if(!is_numeric($a) && !is_numeric($b) && !is_numeric($c)){
-            throw new Exception('need int');
-        }
-        $this->a = $a;
-        $this->b = $b;
-        $this->c = $c;
+    public function __construct(int $sideOne, int $sideTwo,  int $sideThree) {
+
+        $this->sideOne = $sideOne;
+        $this->sideTwo = $sideTwo;
+        $this->sideThree = $sideThree;
 
     }
 
     public function getPerimeter() {
-        return $this->a + $this->b + $this->c;
+        return $this->sideOne + $this->sideTwo + $this->sideThree;
     }
     public function getArea() {
-        $s = ($this->a + $this->b + $this->c) / 2;
-        return sqrt($s * ($s - $this->a) * ($s - $this->b) * ($s - $this->c));
+        $area = ($this->sideOne + $this->sideTwo + $this->sideThree) / 2;
+        return sqrt($area * ($area - $this->sideOne) * ($area - $this->sideTwo) * ($area - $this->sideThree));
     }
 }

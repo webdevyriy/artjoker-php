@@ -5,7 +5,7 @@ require_once('class/Logger.php');
 
 $logger = Logger::getInstance();
 
-$logger->INFO('test2');
+$logger->info('test2');
 
 
 

@@ -34,6 +34,9 @@ class Logger
     private function __wakeup()
     {
     }
+    private  function __sleep(){
+
+    }
 
     private static function createLogFile()
     {
@@ -62,7 +65,7 @@ class Logger
     }
 
 
-    public static function TRACE($message, array $context = [])
+    public static function trace($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
@@ -76,7 +79,7 @@ class Logger
         ]);
     }
 
-    public static function DEBUG($message, array $context = [])
+    public static function debug($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
@@ -90,7 +93,7 @@ class Logger
         ]);
     }
 
-    public static function INFO($message, array $context = [])
+    public static function info($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
@@ -104,7 +107,7 @@ class Logger
         ]);
     }
 
-    public static function WARN($message, array $context = [])
+    public static function warn($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
@@ -119,7 +122,7 @@ class Logger
     }
 
 
-    public static function ERROR($message, array $context = [])
+    public static function error($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);
@@ -133,7 +136,7 @@ class Logger
         ]);
     }
 
-    public static function FATAL($message, array $context = [])
+    public static function fatal($message, array $context = [])
     {
 
         $bt = debug_backtrace(DEBUG_BACKTRACE_PROVIDE_OBJECT, 1);

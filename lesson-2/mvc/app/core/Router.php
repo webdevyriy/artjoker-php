@@ -9,7 +9,7 @@ class Router {
 
     protected $routes = [];
     protected $params = [];
-    public $allPage = [];
+ 
 
     public function __construct() {
         $arr = require 'app/config/routes.php';

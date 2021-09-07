@@ -2,7 +2,7 @@
 
 require_once ('class/Figure.php');
 
-class Rectangle extends Figure
+class Rectangle implements Figure
 {
     private $width;
     private $height;
