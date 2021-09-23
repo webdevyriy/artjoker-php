@@ -200,18 +200,18 @@ TRUNCATE TABLE `users`;
 -- Дамп данных таблицы `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `pass`, `email`, `city_id`) VALUES
-(1, 'admin', '12345', 'admin@gmail.com', 1),
-(2, 'iva', '54321', 'iva@gmail.com', 2),
-(3, 'den', '11111', 'den@gmail.com', 3),
-(4, 'piter', '11111', 'piter@gmail.com', 4),
-(5, 'john', '11111', 'john@gmail.com', 5),
-(6, 'mike', '11111', 'mike@gmail.com', 6),
-(7, 'nilan', '11111', 'nilan@gmail.com', 5),
-(8, 'ivan', '11111', 'ivan@gmail.com', 4),
-(9, 'jzeka', '11111', 'jzeka@gmail.com', 3),
-(10, 'kolya', '11111', 'kolya@gmail.com', 2),
-(11, 'Vasa', '56561', 'vasa@gmail.com', 3);
+INSERT INTO `users` (`id`, `login`, `pass`, `email`, `city_id`, `is_active`) VALUES
+(1, 'admin', '12345', 'admin@gmail.com', 1, 0),
+(2, 'iva', '54321', 'iva@gmail.com', 2, 1),
+(3, 'den', '11111', 'den@gmail.com', 3, 1),
+(4, 'piter', '11111', 'piter@gmail.com', 4, 0),
+(5, 'john', '11111', 'john@gmail.com', 5, 1),
+(6, 'mike', '11111', 'mike@gmail.com', 6, 0),
+(7, 'nilan', '11111', 'nilan@gmail.com', 5, 1),
+(8, 'ivan', '11111', 'ivan@gmail.com', 4, 1),
+(9, 'jzeka', '11111', 'jzeka@gmail.com', 3, 0),
+(10, 'kolya', '11111', 'kolya@gmail.com', 2, 0),
+(11, 'Vasa', '56561', 'vasa@gmail.com', 3, 1);
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц

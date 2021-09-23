@@ -3,6 +3,7 @@ SELECT COUNT(users.id) AS count_users,
        cities.name
 FROM users
          LEFT JOIN cities ON users.city_id = cities.id
+WHERE users.is_active = 1
 GROUP BY city_id;
 
 # Вывести список стран по возрастанию количества пользователей в стране. (Аналогично сделать для городов)
@@ -10,6 +11,7 @@ SELECT COUNT(users.id) AS count_users,
        cities.name
 FROM users
          LEFT JOIN cities ON users.city_id = cities.id
+WHERE users.is_active = 1
 GROUP BY city_id
 ORDER BY count_users;
 
@@ -19,6 +21,7 @@ SELECT COUNT(users.id) AS count_users_in_country, countries.name
 FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
+WHERE users.is_active = 1
 GROUP BY countries.id;
 
 -- Вывести список стран по возрастанию количества пользователей в стране. (Аналогично сделать для городов)
@@ -27,6 +30,7 @@ SELECT COUNT(users.id) AS count_users_in_country, countries.name
 FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
+WHERE users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country;
 
@@ -36,7 +40,7 @@ SELECT cities.name, COUNT(*)
 from users
          JOIN cities ON users.city_id = cities.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY)
+WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY) AND users.is_active = 1
 GROUP BY cities.name;
 
 /* ##########################################*/
@@ -46,7 +50,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY)
+WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY) AND users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC;
 
@@ -56,6 +60,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
+WHERE users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC
 LIMIT 1;
@@ -66,7 +71,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY)
+WHERE DATE(authorizatiONs.data) > DATE_SUB('2021-09-14 20:30:00', INTERVAL 3 DAY) AND users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC;
 
@@ -76,7 +81,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > MONTH(NOW())
+WHERE DATE(authorizatiONs.data) > MONTH(NOW()) AND users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC;
 
@@ -86,7 +91,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > now() - interval 3 mONth
+WHERE DATE(authorizatiONs.data) > now() - interval 3 mONth AND users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC;
 
@@ -97,7 +102,7 @@ FROM users
          LEFT JOIN cities ON users.city_id = cities.id
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE DATE(authorizatiONs.data) > now() - interval 1 YEAR
+WHERE DATE(authorizatiONs.data) > now() - interval 1 YEAR AND users.is_active = 1
 GROUP BY countries.id
 ORDER BY count_users_in_country DESC;
 
@@ -106,6 +111,7 @@ SELECT cities.name, COUNT(users.id) AS count
 from users
          JOIN cities ON users.city_id = cities.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
+WHERE users.is_active = 1
 GROUP BY cities.name
 ORDER BY count DESC;
 
@@ -115,7 +121,7 @@ from users
          JOIN cities ON users.city_id = cities.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 2
+WHERE roles.id = 2 AND users.is_active = 1
 GROUP BY cities.name
 ORDER BY count DESC;
 
@@ -127,7 +133,7 @@ from users
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 3
+WHERE roles.id = 3 AND users.is_active = 1
 GROUP BY countries.name
 ORDER BY count DESC;
 
@@ -140,7 +146,7 @@ from users
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 1
+WHERE roles.id = 1 AND users.is_active = 1
   AND DATE(authorizatiONs.data) > MONTH(NOW())
 GROUP BY countries.name
 ORDER BY count DESC;
@@ -152,7 +158,7 @@ from users
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE roles.id = 1
+WHERE roles.id = 1 AND users.is_active = 1
   AND DATE(authorizatiONs.data) > MONTH(NOW())
 GROUP BY cities.name
 ORDER BY count DESC;
@@ -160,7 +166,7 @@ ORDER BY count DESC;
 # Найти всех пользователей у которых нет ни одной роли
 SELECT *
 FROM users
-WHERE id NOT IN (SELECT user_id FROM roles_users);
+WHERE id NOT IN (SELECT user_id FROM roles_users) AND users.is_active = 1;
 
 # Посчитать сколько проживает в каждой стране и в каждом городе пользователей по всем существующим ролям
 
@@ -170,7 +176,7 @@ from users
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE roles.id = 1
+WHERE roles.id = 1 AND users.is_active = 1
 GROUP BY cities.name
 ORDER BY count DESC;
 
@@ -180,7 +186,7 @@ from users
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE roles.id = 2
+WHERE roles.id = 2 AND users.is_active = 1
 GROUP BY cities.name
 ORDER BY count DESC;
 
@@ -192,7 +198,7 @@ from users
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
          JOIN authorizatiONs ON users.id = authorizatiONs.user_id
-WHERE roles.id = 3
+WHERE roles.id = 3 AND users.is_active = 1
 GROUP BY cities.name
 ORDER BY count DESC;
 
@@ -205,7 +211,7 @@ from users
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 1
+WHERE roles.id = 1 AND users.is_active = 1
 GROUP BY countries.name
 ORDER BY count DESC;
 
@@ -218,7 +224,7 @@ from users
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 2
+WHERE roles.id = 2 AND users.is_active = 1
 GROUP BY countries.name
 ORDER BY count DESC;
 
@@ -231,6 +237,6 @@ from users
          LEFT JOIN countries ON cities.country_id = countries.id
          JOIN roles_users ON users.id = roles_users.user_id
          JOIN roles ON roles_users.role_id = roles.id
-WHERE roles.id = 3
+WHERE roles.id = 3 AND users.is_active = 1
 GROUP BY countries.name
 ORDER BY count DESC;
