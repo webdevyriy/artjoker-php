@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 23 2021 г., 08:55
+-- Время создания: Сен 27 2021 г., 10:32
 -- Версия сервера: 5.7.29
 -- Версия PHP: 7.4.5
 
@@ -35,11 +35,6 @@ CREATE TABLE IF NOT EXISTS `authorizations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4;
 
 --
--- Очистить таблицу перед добавлением данных `authorizations`
---
-
-TRUNCATE TABLE `authorizations`;
---
 -- Дамп данных таблицы `authorizations`
 --
 
@@ -69,11 +64,6 @@ CREATE TABLE IF NOT EXISTS `cities` (
 ) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 
 --
--- Очистить таблицу перед добавлением данных `cities`
---
-
-TRUNCATE TABLE `cities`;
---
 -- Дамп данных таблицы `cities`
 --
 
@@ -98,11 +88,6 @@ CREATE TABLE IF NOT EXISTS `countries` (
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
 
 --
--- Очистить таблицу перед добавлением данных `countries`
---
-
-TRUNCATE TABLE `countries`;
---
 -- Дамп данных таблицы `countries`
 --
 
@@ -126,11 +111,6 @@ CREATE TABLE IF NOT EXISTS `roles` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
 
 --
--- Очистить таблицу перед добавлением данных `roles`
---
-
-TRUNCATE TABLE `roles`;
---
 -- Дамп данных таблицы `roles`
 --
 
@@ -152,11 +132,6 @@ CREATE TABLE IF NOT EXISTS `roles_users` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
---
--- Очистить таблицу перед добавлением данных `roles_users`
---
-
-TRUNCATE TABLE `roles_users`;
 --
 -- Дамп данных таблицы `roles_users`
 --
@@ -186,16 +161,12 @@ CREATE TABLE IF NOT EXISTS `users` (
   `pass` varchar(45) NOT NULL,
   `email` varchar(45) NOT NULL,
   `city_id` int(11) DEFAULT NULL,
+  `is_active` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `iduser_UNIQUE` (`id`),
   KEY `city_id` (`city_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4;
 
---
--- Очистить таблицу перед добавлением данных `users`
---
-
-TRUNCATE TABLE `users`;
 --
 -- Дамп данных таблицы `users`
 --
