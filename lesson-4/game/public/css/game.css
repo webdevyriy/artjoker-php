@@ -1,0 +1,211 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;800&display=swap");
+
+body{
+    font-size: 16px;
+    line-height: 1.8;
+    font-family: "Nunito", sans-serif;
+}
+
+.game-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #fdfdfd;
+    overflow: hidden;
+}
+
+.game-table{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 650px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: #fff;
+    z-index: 99;
+    padding: 35px 10px;
+    border: 1px solid #9bcef7;
+    box-shadow: 0px 0px 1px 1px #ccc;
+}
+
+.game-table h1{
+    font-family: panama;
+    color: #727477;
+    margin-bottom: 25px;
+}
+
+.players-box{
+    overflow: hidden;
+    width: 80%;
+    margin: 20px auto;
+
+}
+.player-one,
+.computer{
+    width: 50%;
+    display: inline-block;
+    position: relative;
+}
+
+.player-one{
+    float: left;
+    text-align: left;
+}
+
+.computer{
+    float: left;
+    text-align: right;
+}
+
+.computer .thumbnails{
+    background: #b196e0;
+}
+
+.players-box .thumbnails{
+    width: 64px;
+    border-radius: 50%;
+}
+
+.player-name{
+    color: #a2a7ab;
+    font-size: 15px;
+    display: inline-block;
+    padding: 5px 10px;
+    border: 1px solid #a2a7ab;
+    width: 120px;
+    text-align: center;
+    margin: 0 10px;
+}
+
+
+
+.game{
+    width: 55%;
+    margin: 35px auto;
+}
+.game-row {
+    display: flex;
+}
+.game-row:not(:last-child){
+    border-bottom: 3px solid #ececec;
+}
+
+.game .game-row .game-col:not(:last-child){
+    border-right: 3px solid #ececec;
+}
+
+.game-col{
+    width: 33.33%;
+    height: 120px;
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.game-col .play{
+    height: 100%;
+    width: 100%;
+    line-height: 1.7;
+    font-size: 70px;
+}
+.game-col .one{
+    color: red;
+}
+
+.game-col .two{
+    color: blue;
+}
+
+
+.game-page  .icons{
+    position: absolute;
+}
+
+footer{
+    color: #7d7272;
+}
+
+footer a{
+    color: #ff5722;
+}
+
+.msg-page{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .4);
+    display: none;
+}
+
+.msg{
+    background: #fff;
+    width: 70%;
+    padding: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #2196F3;
+}
+
+.msg p{
+    font-size: 17px;
+    color: #636262;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    word-spacing: 4px;
+}
+
+.msg button{
+    border: none;
+    padding: 9px 20px;
+    color: #fff;
+    background-color: #2495ef;
+    border-radius: 25px;
+    font-size: 15px;
+    cursor: pointer;
+    width: 200px;
+}
+
+.game-result {
+    display: flex;
+    flex-direction: column;
+}
+
+.game-result__item{
+    font-size: 15px;
+    display: inline-block;
+    padding: 5px 10px;
+    width: 150px;
+    text-align: center;
+    margin: 0 10px;
+}
+.game-result__wins{
+    color: #ffffff;
+    background-color: #2495ef;
+}
+.game-result__lose{
+    background-color: red;
+    color: #ffffff;
+}
+.game-result__item:not(:last-child){
+    margin-bottom: 15px;
+}
+.game-exit{
+
+    text-align: right;
+}
+.game-exit a{
+    display: inline-block;
+    padding: 5px 10px;
+    width: 150px;
+    font-size: 15px;
+    text-align: center;
+    margin: 0 10px;
+    background-color: red;
+    color: #ffffff;
+    text-decoration: none;
+}
