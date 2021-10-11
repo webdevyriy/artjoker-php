@@ -5,10 +5,9 @@
  * */
 
 
-function customDecbin(dec) {
-    return (dec >>> 0).toString(2);
+function customDecbin(number) {
+    return (number >>> 0).toString(2);
 }
-
 
 /*
  * Написать функцию, которая выполняет преобразование наоборот.
@@ -18,35 +17,37 @@ function customDecbin(dec) {
  * */
 
 
-function customBindec(num) {
-    let dec = 0;
-    for (let i = 0; i < num.length; i++) {
-        dec *= 2;
-        dec += +num[i];
+function customBindec(number) {
+    let result = 0;
+    for (let i = 0; i < number.length; i++) {
+        result *= 2;
+        result += +number[i];
     }
-    return dec;
+    return result;
 }
 
 
 /* Найти сумму всех первых N чисел фибоначи */
-function sumFibonacci(n) {
-    let a = 1;
-    let b = 1;
-    for (let i = 3; i <= n; i++) {
-        let c = a + b;
-        a = b;
-        b = c;
+
+function sumFibonacci2(number)
+{
+    let result = [0, 1];
+    
+    for (let i = 2; i <= number; i++) {
+       let prevNumOne = result[i - 1];
+       let prevNumTwo = result[i - 2];
+        result.push(prevNumOne + prevNumTwo);
     }
-    return b;
+    
+    return result[number];
 }
+
 
 /* рекурсивно*/
 
-function sumFibonacciRecursively(n) {
-    return n <= 1 ? n : sumFibonacciRecursively(n - 1) + sumFibonacciRecursively(n - 2);
+function sumFibonacciRecursively(number) {
+    return number <= 1 ? number : sumFibonacciRecursively(number - 1) + sumFibonacciRecursively(number - 2);
 }
-
-
 
 
 /*Написать функцию, возведения числа N в степень M*/
@@ -93,8 +94,6 @@ function customPowRecursively(number, exponentiation)
 }
 
 
-
-
 /*
  Написать функцию которая вычисляет входит ли IP-адрес в диапазон указанных IP-адресов. Вычислить для версии ipv4.
  * */
@@ -132,7 +131,6 @@ function isPrime(number)
     }
     return number > 1;
 }
-let arr5 = [2, 5, 3, -59, 2.75];
 
 function calculatePercentageArray(arr) {
     let plus = 0;
@@ -259,16 +257,6 @@ function sortArrayDescendingRecursively (arr){
 
 /* Для двумерных массивов Транспонировать матрицу */
 
-let arr1 = [
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-    [1,2,3,4,5],
-];
-
 function transposeMatrix(arr) {
     let m = arr.length, n = arr[0].length, result = [];
     for (let i = 0; i < n; i++) {
@@ -284,24 +272,14 @@ function transposeMatrix(arr) {
 * */
 
 
-let a1 = [
-    [1, 2, 5],
-    [4, 5, 6]
-];
-
-let  a2 = [
-    [3, 2, 6],
-    [1, 1, 6]
-];
-
 function sumMatrix(matrixOne, matrixTwo)
 {
-    let m = matrixOne.length;
-    let n = matrixOne[0].length;
+    let mantrixLeagth = matrixOne.length;
+    let mantrixLeagthTwo = matrixOne[0].length;
     let result = [];
-    for (let i = 0; i < m; i++) {
+    for (let i = 0; i < mantrixLeagth; i++) {
         result[i] = [];
-        for (let j = 0; j < n; j++) {
+        for (let j = 0; j < mantrixLeagthTwo; j++) {
             result[i][j] = matrixOne[i][j] + matrixTwo[i][j];
         }
 
@@ -321,20 +299,14 @@ function array_key_exists (key, search) {
 }
 
 function array_values (input) {
-    const tmpArr = []
+    const arr = []
     let key = ''
     for (key in input) {
-        tmpArr[tmpArr.length] = input[key]
+        arr[arr.length] = input[key]
     }
-    return tmpArr
+    return arr
 }
 
-
-let arr6_3 = [
-    [16, 89, 0, -59, 5],
-    [19, 59, 10, -9, 95],
-    [19, 59, 10, -9, 95],
-];
 
 function positiveMatrixRow(arr)
 {
@@ -379,35 +351,18 @@ function positiveMatrixRow(arr)
 
 
 function positiveMatrixColumn(arr) {
-    let res = [];
+    let result = [];
 
     arr.forEach(function (item) {
-        res.push(item.filter(Number))
+        result.push(item.filter(Number))
     });
-    return res;
+    return result;
 }
-
-
 
 /*
  Написать рекурсивную функцию которая будет обходить и выводить все значения любого массива и любого уровня вложенности
 */
 
-
-let arr3 = [
-    [
-        ['a', 'b'],
-        ['c', 'd'],
-    ],
-    [
-        ['e', 'f'],
-        ['g', 'h'],
-    ],
-    [
-        ['i', 'j'],
-        ['k', 'l'],
-    ],
-];
 
 function getValueArrayComplexity(...arr)
 {
@@ -422,7 +377,4 @@ function getValueArrayComplexity(...arr)
         }
     }
     return result;
-
 }
-
-console.log(getValueArrayComplexity(arr3))
