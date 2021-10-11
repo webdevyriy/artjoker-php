@@ -30,16 +30,25 @@ class MainController extends Controller {
         $login = $_POST['login'];
         $password = $_POST['password'];
         $user = $this->model->findUser($login, $password);
-        if ($user) {
-            $_SESSION['isAuth'] = true;
-            $_SESSION['login'] = $user['login'];
-            $_SESSION['email'] = $user['email'];
-            $_SESSION['id'] = $user['id'];
 
-            $response = [
-                "message" => "yes",
-            ];
-            echo json_encode($response);
+        if ($user) {
+            if ($password && $login) {
+                $_SESSION['isAuth'] = true;
+                $_SESSION['login'] = $user['login'];
+                $_SESSION['email'] = $user['email'];
+                $_SESSION['id'] = $user['id'];
+
+                $response = [
+                    "message" => "game",
+                ];
+                echo json_encode($response);
+            }else{
+                $response = [
+                    "message" => "no",
+                ];
+                echo json_encode($response);
+            }
+
         } else {
             $response = [
                 "message" => "no",

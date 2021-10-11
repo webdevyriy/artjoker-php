@@ -30,7 +30,7 @@
             processData: false,
         }).done(function (result) {
             let data = JSON.parse(result);
-            if (JSON.parse(result).message === 'yes'){
+            if (JSON.parse(result).message === 'game'){
                 window.location.href = '/game';
             }else if(JSON.parse(result).message === 'no'){
                 alert('Ошибка авторизационные данные неверны или устарели!')
