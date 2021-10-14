@@ -5,8 +5,15 @@
  * */
 
 
-function customDecbin(number) {
-    return (number >>> 0).toString(2);
+function customDecbin(number)
+{
+    let result = '';
+
+    while (number > 0) {
+        result = number % 2 + result;
+        number = Math.floor(number / 2);
+    }
+    return result;
 }
 
 /*
@@ -16,32 +23,30 @@ function customDecbin(number) {
  *
  * */
 
+function customBindec1(number)
+{
+    let number_len = number.length;
+    let result = '';
 
-function customBindec(number) {
-    let result = 0;
-    for (let i = 0; i < number.length; i++) {
-        result *= 2;
-        result += +number[i];
+    for (let i = 0; i < number_len; i++) {
+        result = Math.floor(result) + number[number_len - i - 1] * 2 ** i;
     }
     return result;
 }
 
 
 /* Найти сумму всех первых N чисел фибоначи */
-
-function sumFibonacci2(number)
-{
+function sumFibonacci(number) {
     let result = [0, 1];
-    
+
     for (let i = 2; i <= number; i++) {
-       let prevNumOne = result[i - 1];
-       let prevNumTwo = result[i - 2];
+        let prevNumOne = result[i - 1];
+        let prevNumTwo = result[i - 2];
         result.push(prevNumOne + prevNumTwo);
     }
-    
+
     return result[number];
 }
-
 
 /* рекурсивно*/
 
@@ -72,8 +77,7 @@ function customPowRecursively(number, exponentiation) {
 
 /*Написать функцию, возведения числа N в степень M*/
 
-function customPow(number, exponentiation)
-{
+function customPow(number, exponentiation) {
     let result = number;
     for (let i = 0; i < exponentiation - 1; i++) {
         result = result * number;
@@ -83,9 +87,7 @@ function customPow(number, exponentiation)
 }
 
 
-
-function customPowRecursively(number, exponentiation)
-{
+function customPowRecursively(number, exponentiation) {
     if (exponentiation !== 0) {
         return number * customPowRecursively(number, exponentiation - 1);
     }
@@ -98,11 +100,10 @@ function customPowRecursively(number, exponentiation)
  Написать функцию которая вычисляет входит ли IP-адрес в диапазон указанных IP-адресов. Вычислить для версии ipv4.
  * */
 
-function calculatingIp(startIp, endIp, targetIp)
-{
+function calculatingIp(startIp, endIp, targetIp) {
     let startIpChek = startIp.replace(".", "", startIp);
-    let endIpChek  = endIp.replace(".", "", endIp);
-    let targetIpChek  = targetIp.replace(".", "", targetIp);
+    let endIpChek = endIp.replace(".", "", endIp);
+    let targetIpChek = targetIp.replace(".", "", targetIp);
 
     startIpChek = Number(startIpChek);
     endIpChek = Number(endIpChek);
@@ -122,8 +123,7 @@ function calculatingIp(startIp, endIp, targetIp)
  */
 
 
-function isPrime(number)
-{
+function isPrime(number) {
     for (let i = 2; i < number; i++) {
         if (number % i === 0) {
             return false;
@@ -132,39 +132,53 @@ function isPrime(number)
     return number > 1;
 }
 
-function calculatePercentageArray(arr) {
+
+function calculatePercentageArrayPlus(arr) {
     let plus = 0;
+    let allElement = arr.length;
+
+    for (let i = 0; i < allElement; i++) {
+        if (arr[i] > 0) {
+            plus++;
+        }
+    }
+    return 100 * plus / allElement;
+}
+
+function calculatePercentageArrayMinus(arr) {
     let minus = 0;
-    let zero = 0;
+    let allElement = arr.length;
+    for (let i = 0; i < allElement; i++) {
+        if (arr[i] < 0) {
+            minus++;
+        }
+    }
+
+    return 100 * minus / allElement;
+}
+
+function calculatePercentageArrayNormal(arr) {
     let normal = 0;
     let allElement = arr.length;
 
     for (let i = 0; i < allElement; i++) {
-
-        if (arr[i] > 0) {
-            plus++;
-        }
-
-        if (arr[i] < 0) {
-            minus++;
-        }
-        if (arr[i] == 0) {
-            zero++;
-        }
         if (isPrime(arr[i])) {
             normal++;
         }
-
     }
+    return 100 * normal / allElement;
+}
 
-    let resultObject = {
-        'процент положительных чисел': 100 * plus / allElement,
-        'процент отрицательных чисел': 100 * minus / allElement,
-        'процент нулевых чисел': 100 * zero / allElement,
-        'процент простых чисел': 100 * normal / allElement,
-    };
 
-    return resultObject;
+function calculatePercentageArrayZero(arr) {
+    let zero = 0;
+    let allElement = arr.length;
+    for (let i = 0; i < allElement; i++) {
+        if (arr[i] == 0) {
+            zero++;
+        }
+    }
+    return 100 * zero / allElement;
 }
 
 /*
@@ -187,31 +201,36 @@ function sortArrayAscending(arr) {
     return result;
 }
 
-function sortArrayAscendingRecursively (arr){
-    if (arr.length < 2){
-        return arr
+function mySort(arr) {
+    if (arr.length < 2) {
+        return arr;
     }
+    let less = [];
+    let baseValue = arr[arr.length - 1];
+    let more = [];
 
-    const baseValue = arr[arr.length - 1];
-    const left = [],
-        right = []
-
-    for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i] < baseValue ) {
-            left.push(arr[i])
-        } else {
-            right.push(arr[i])
+    for(let i = 0; i < arr.length; i++){
+        if(baseValue === arr[i]){
+            continue
+        }
+        if(baseValue < arr[i]){
+            less.push(arr[i])
+        }else {
+            more.push(arr[i]);
         }
     }
 
-    return [...sortArrayAscendingRecursively(left), baseValue, ...sortArrayAscendingRecursively(right)]
+    return [
+        ...mySort(less),
+        baseValue,
+        ...mySort(more)
+    ]
 }
 
 
 /* Отсортировать элементы по убыванию*/
 
-function sortArrayDescending(arr)
-{
+function sortArrayDescending(arr) {
     let result = arr;
 
     for (let i = 0; i < result.length; i++) {
@@ -227,41 +246,50 @@ function sortArrayDescending(arr)
     return result;
 }
 
-
 /*
  * Рекурсивно
  * */
 
-function sortArrayDescendingRecursively (arr){
-    if (arr.length < 2){
-        return arr
+function mySortDecrease(arr) {
+    if (arr.length < 2) {
+        return arr;
     }
+    let less = [];
+    let baseValue = arr[arr.length - 1];
+    let more = [];
 
-    const baseValue = arr[arr.length - 1];
-    const left = [],
-        right = []
-
-    for (let i = 0; i < arr.length - 1; i++) {
-        if (arr[i] < baseValue ) {
-            left.push(arr[i])
+    for (let i = 0; i < arr.length; i++) {
+        if (baseValue === arr[i]) {
+            continue
+        }
+        if (baseValue < arr[i]) {
+            less.push(arr[i])
         } else {
-            right.push(arr[i])
+            more.push(arr[i]);
         }
     }
-
-    let res = [...sortArrayDescendingRecursively(left), baseValue, ...sortArrayDescendingRecursively(right)];
-
-    return res.reverse();
+    let result = [
+        ...mySortDecrease(less),
+        baseValue,
+        ...mySortDecrease(more)
+    ];
+    return result.reverse()
 }
+
+
 
 
 /* Для двумерных массивов Транспонировать матрицу */
 
 function transposeMatrix(arr) {
-    let m = arr.length, n = arr[0].length, result = [];
-    for (let i = 0; i < n; i++) {
+    let matrix = arr.length;
+    let matrixTwo = arr[0].length;
+    let result = [];
+    for (let i = 0; i < matrixTwo; i++) {
         result[i] = [];
-        for (let j = 0; j < m; j++) result[i][j] = arr[j][i];
+        for (let j = 0; j < matrix; j++) {
+            result[i][j] = arr[j][i];
+        }
     }
     return result;
 }
@@ -272,8 +300,7 @@ function transposeMatrix(arr) {
 * */
 
 
-function sumMatrix(matrixOne, matrixTwo)
-{
+function sumMatrix(matrixOne, matrixTwo) {
     let mantrixLeagth = matrixOne.length;
     let mantrixLeagthTwo = matrixOne[0].length;
     let result = [];
@@ -291,38 +318,21 @@ function sumMatrix(matrixOne, matrixTwo)
 Удалить строки, в которых сумма элементов положительна и присутствует хотя бы один нулевой элемент
    */
 
-function array_key_exists (key, search) {
-    if (!search || (search.constructor !== Array && search.constructor !== Object)) {
-        return false
-    }
-    return key in search
-}
 
-function array_values (input) {
-    const arr = []
-    let key = ''
-    for (key in input) {
-        arr[arr.length] = input[key]
-    }
-    return arr
-}
-
-
-function positiveMatrixRow(arr)
-{
+function positiveMatrixRow(arr) {
     let sumRow = [];
 
     let rowHasZero = [];
 
-    let iMax = arr.length;
 
     for (let i = 0, iMax = arr.length; i < iMax; i++) {
+
         for (let j = 0, jMax = arr[i].length; j < jMax; j++) {
-            if (!array_key_exists(i, sumRow)) {
+            if (!arr.indexOf(i, sumRow)) {
                 sumRow[i] = 0;
             }
 
-            if (!array_key_exists(i, rowHasZero)) {
+            if (!arr.indexOf(i, rowHasZero)) {
                 rowHasZero[i] = false;
             }
 
@@ -339,9 +349,9 @@ function positiveMatrixRow(arr)
             continue;
         }
         result.push(arr[i])
-
     }
-    return array_values(result);
+
+    return result;
 }
 
 
@@ -364,15 +374,14 @@ function positiveMatrixColumn(arr) {
 */
 
 
-function getValueArrayComplexity(...arr)
-{
+function getValueArrayComplexity(...arr) {
     let result = [];
 
-    for(let i = 0; i < arr.length; i++){
+    for (let i = 0; i < arr.length; i++) {
         let currentItem = arr[i];
-        if(Array.isArray(currentItem)){
+        if (Array.isArray(currentItem)) {
             result.push(...getValueArrayComplexity(...currentItem))
-        }else {
+        } else {
             result.push(currentItem);
         }
     }
