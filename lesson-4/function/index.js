@@ -23,7 +23,7 @@ function customDecbin(number)
  *
  * */
 
-function customBindec1(number)
+function customBindec(number)
 {
     let number_len = number.length;
     let result = '';
