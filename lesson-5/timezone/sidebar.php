@@ -20,6 +20,7 @@
                         <a href="<?php echo $term->slug ?>" class="d-flex">
                             <p><?php echo $term->name ?> &nbsp</p>
                             <p>(<?php echo $term->count ?>)</p>
+                        </a>
                     </li>
                 <?php endforeach; ?>
             </ul>

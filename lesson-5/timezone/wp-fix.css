@@ -55,3 +55,8 @@ body.single-blog .thumb {
 .card-blue .img-cap span {
     background: #4cd3e3 !important;
 }
+.single_sidebar_widget h4 {
+    border-bottom: 0;
+    padding-bottom: 0;
+    margin-bottom: 0;
+}

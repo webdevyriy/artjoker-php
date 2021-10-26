@@ -90,7 +90,7 @@
     <div class="h-100 d-flex align-items-center justify-content-center">
         <div class="search-close-btn">+</div>
         <form class="search-model-form" action="<?php echo home_url( '/' ) ?>"  method="get" role="search" >
-            <input type="text" id="search-input"
+            <input type="text"
                    value="<?php echo get_search_query() ?>" name="s" id="s"
                    placeholder="<?php _e('Searching key.....')?>">
         </form>
