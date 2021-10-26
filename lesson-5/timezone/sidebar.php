@@ -4,7 +4,7 @@
     </aside>
 
 
-    <?php if (is_post_type_archive('blog') || is_singular('blog')): ?>
+    <?php if (is_post_type_archive('blog') || is_singular('blog') || is_tax('taxonomy')): ?>
         <aside class="single_sidebar_widget post_category_widget">
             <h4 class="widget_title"><?php _e('Категории блога') ?></h4>
             <?php
@@ -16,8 +16,11 @@
             ?>
             <ul class="list cat-list">
                 <?php foreach ($terms as $term): ?>
+                    <?php
+                    $link = get_site_url() . '/' . $term->taxonomy . '/' . $term->slug;
+                    ?>
                     <li>
-                        <a href="<?php echo $term->slug ?>" class="d-flex">
+                        <a href="<?php echo $link ?>" class="d-flex">
                             <p><?php echo $term->name ?> &nbsp</p>
                             <p>(<?php echo $term->count ?>)</p>
                         </a>
