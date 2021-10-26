@@ -1,0 +1,57 @@
+body.single-blog .thumb::after {
+    display: none;
+}
+body.single-blog .thumb {
+    overflow: visible;
+    position: static;
+}
+.user .thumb{
+    flex-shrink: 0;
+    object-fit: cover;
+}
+.user .thumb img{
+    object-fit: cover;
+}
+
+.comment-reply-link:hover {
+    background: -webkit-linear-gradient(131deg, #ff2020 0%, #ff2020 99%);
+    background-clip: border-box;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-decoration: none;
+    transition: .4s;
+}
+.comment-reply-link {
+    background-color: transparent;
+    color: #888888;
+    padding: 5px 18px;
+    font-size: 14px;
+    display: block;
+    font-weight: 400 !important;
+}
+.disable{
+    pointer-events: none;
+}
+.product-img{
+    height: 400px;
+}
+.product-img img{
+    height: 100%;
+    object-fit: cover;
+}
+
+.popular-items .single-popular-items .popular-img img {
+    object-fit: cover;
+}
+
+
+.mb-100{
+    margin-bottom: 100px;
+}
+
+.card-blue .popular-img {
+    border-bottom: 3px solid #4cd3e3 !important;
+}
+.card-blue .img-cap span {
+    background: #4cd3e3 !important;
+}
